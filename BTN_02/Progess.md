@@ -69,3 +69,6 @@
 
 Cả hai vòng lặp `for` và `while` đều cho kết quả giống nhau khi thực hiện chương trình.
 Vòng lặp `for` có cách viết ngắn gọn, phần khởi tạo, điều kiện và bước tăng được đặt chung trong một câu lệnh. Vòng lặp `while` cần khởi tạo biến trước và thực hiện tăng biến bên trong vòng lặp.
+
+# Khó khăn gặp phải: Nhóm gặp trường hợp để trùng tên file nên bị xung đột cả nhóm bị lỗi github mà phải xóa foder làm lại từ đầu
+
