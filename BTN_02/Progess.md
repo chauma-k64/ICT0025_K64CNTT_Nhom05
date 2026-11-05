@@ -4,6 +4,18 @@
 - **Lò Tuấn Anh:** Xây dựng khối vòng lặp (sử dụng vòng lặp for - while).
 - **Mùa A Chạu:** Xây dựng khối xử lý nhãn trạng thái (sử dụng cấu trúc if-else).
 - **Tòng Thị Thanh Ngọc:** Thiết kế các ca kiểm thử, chạy kiểm thử các trường hợp biên và ghi chép tệp PROGRESS.md.
+
+
+## Nhiệm vụ 2
+1. if_else.php 
+    $trangThai = 1 in ra Mới tạo
+    $trang Thai = 2 in ra Đang xử lý 
+    $trang Thai = 9 in ra Không xác định
+2.Swich_case.php
+    $trangThai = 1 in ra Mới tạo
+    $trang Thai = 2 in ra Đang xử lý 
+    $trang Thai = 9 in ra Không xác định
+-- Vai trò của break: Nếu điều kiện đã đúng thì dừng lại chương trình, không kiểm tra tiếp những nhánh sau đó
   
 ## Nhiệm vụ 3: Bài tập danh sách đánh số
 ### 1. Nội dung thực hiện
