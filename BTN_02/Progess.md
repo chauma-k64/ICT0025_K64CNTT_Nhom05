@@ -1,3 +1,9 @@
+# Nhóm 5
+## 1. Phân công nhiệm vụ thành viên
+- **Anai Tông Dia Va:** Xây dựng khối xử lý nhãn trạng thái (sử dụng cấu trúc switch-case).
+- **Lò Tuấn Anh:** Xây dựng khối vòng lặp hiển thị danh sách đánh số kiện hàng theo $soLuong (sử dụng vòng lặp for).
+- **Mùa A Chạu:** Xây dựng khối xử lý nhãn trạng thái (sử dụng cấu trúc if-else).
+- **Tòng Thị Thanh Ngọc:** Thiết kế các ca kiểm thử, chạy kiểm thử các trường hợp biên và ghi chép tệp PROGRESS.md.
 ## Nhiệm vụ 3: Bài tập danh sách đánh số
 
 ### 1. Nội dung thực hiện
