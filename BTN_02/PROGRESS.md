@@ -8,7 +8,7 @@
 ### Nhiệm vụ 1:
 -
 ### Nhiệm vụ 2:
-- 1. if_else.php 
+- 1.if_else.php 
    - $trangThai = 1 in ra Mới tạo
    - $trang Thai = 2 in ra Đang xử lý 
    - $trang Thai = 9 in ra Không xác định
