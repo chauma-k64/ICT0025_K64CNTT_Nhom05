@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+}
+
+.btn-add {
+    background-color: #2e7d32;
+}
+
+.btn-edit {
+    background-color: #f57c00;
+}
+
+.btn-del {
+    background-color: #d32f2f;
+}
+
+input[type="text"],
+textarea {
+    width: 300px;
+    padding: 5px;
+}
+
+select {
+    padding: 5px;
+}
+
+.btn-save,
+.btn-update {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+}
+
+.btn-save {
+    background: #2e7d32;
+}
+
+.btn-update {
+    background: #f57c00;
+}
+
+.back-link {
+    margin-left: 10px;
+}
+
+.status-active {
+    color: green;
+}
+
+.status-inactive {
+    color: red;
+}
+
+.empty-state {
+    text-align: center;
+}
