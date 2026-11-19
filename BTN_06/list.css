@@ -1,0 +1,51 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #15c824;
+}
+
+.btn-add {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #2e7d32;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.empty {
+  padding: 14px;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  margin-top: 14px;
+}
+
+.badge-on {
+  color: #1b5e20;
+  font-weight: bold;
+}
+
+.badge-off {
+  color: #b71c1c;
+  font-weight: bold;
+}
+
+.delete-form {
+  display: inline;
+}
+
+.btn-delete {
+  color: red;
+  margin-left: 6px;
+}
