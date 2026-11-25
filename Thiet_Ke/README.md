@@ -9,7 +9,7 @@
 | :-- | :------------------ | :----------- |
 | 1   | Mùa A Chạu          | 2023A0840    |
 | 2   | Lò Tuấn Anh         | [MSV ]       |
-| 3   | Tòng Thị Thanh Ngọc | [MSV ]       |
+| 3   | Tòng Thị Thanh Ngọc | 2023A0906    |
 | 4   | Anai Tông Dia Va    | 2023AN046       |
 
 ## Cách tạo/chọn CSDL và Import SQL
