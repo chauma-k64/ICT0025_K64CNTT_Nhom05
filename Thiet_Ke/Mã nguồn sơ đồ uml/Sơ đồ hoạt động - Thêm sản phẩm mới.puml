@@ -1,0 +1,36 @@
+@startuml
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #0F766E
+  ArrowColor #334155
+}
+
+|Cán bộ quản lý (Admin / Nhân viên)|
+start
+:Chọn chức năng "+ Thêm sản phẩm mới";
+
+|Hệ thống|
+:Kiểm tra quyền truy cập (yeu_cau_vai_tro);
+:Hiển thị biểu mẫu nhập thông tin sản phẩm;
+
+|Cán bộ quản lý (Admin / Nhân viên)|
+:Nhập tên sản phẩm, loại nông sản,\nđơn vị tính, mô tả;
+:Nhấn nút "Lưu sản phẩm";
+
+|Hệ thống|
+:Kiểm tra tính hợp lệ dữ liệu (Validate);
+if (Dữ liệu hợp lệ & không trống trường bắt buộc?) then (Không)
+  :Hiển thị danh sách lỗi & giữ lại dữ liệu đã nhập;
+  |Cán bộ quản lý (Admin / Nhân viên)|
+  :Chỉnh sửa lại thông tin trên form;
+  stop
+else (Hợp lệ)
+  |Hệ thống|
+  :Thực thi lệnh INSERT vào bảng san_pham\n(mặc định trang_thai = 1);
+  :Chuyển hướng về danh sách sản phẩm\n(admin.php?page=san_pham);
+endif
+
+|Cán bộ quản lý (Admin / Nhân viên)|
+:Xem sản phẩm mới vừa hiển thị trong bảng;
+stop
+@enduml

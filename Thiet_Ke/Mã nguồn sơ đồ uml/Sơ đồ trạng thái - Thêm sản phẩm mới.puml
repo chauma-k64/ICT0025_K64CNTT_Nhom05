@@ -1,0 +1,18 @@
+@startuml
+skinparam state {
+  BackgroundColor #F8FAFC
+  BorderColor #15803D
+  ArrowColor #334155
+}
+
+[*] --> DangHienThi : Thêm sản phẩm mới\n(trang_thai = 1)
+
+state "Đang hiển thị\n(trang_thai = 1)" as DangHienThi
+state "Trong thùng rác / Tạm ẩn\n(trang_thai = 0)" as TrongThungRac
+
+DangHienThi --> DangHienThi : Cập nhật thông tin\n(update.php)
+DangHienThi --> TrongThungRac : Xóa mềm\n(delete.php)
+TrongThungRac --> DangHienThi : Khôi phục\n(thung_rac.php)
+TrongThungRac --> [*] : Xóa vĩnh viễn khỏi CSDL
+
+@enduml

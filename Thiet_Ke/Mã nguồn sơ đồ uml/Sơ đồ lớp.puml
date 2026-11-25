@@ -1,0 +1,120 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+' === NHÓM LỚP NGƯỜI DÙNG & PHÂN QUYỀN ===
+class TaiKhoan {
+  - idTaiKhoan : int
+  - tenDangNhap : String
+  - matKhau : String
+  - hoTen : String
+  - email : String
+  - soDienThoai : String
+  - vaiTro : String
+  - trangThai : int
+  + dangNhap() : bool
+  + dangXuat() : void
+}
+
+class NhanVien {
+  + quanLySanPham() : void
+  + quanLyVungTrong() : void
+  + quanLyHoKinhDoanh() : void
+  + capNhatGiaNongSan() : void
+  + quanLyDauMoi() : void
+}
+
+class Admin {
+  + taoTaiKhoan() : bool
+  + phanQuyen() : bool
+  + khoaMoKhoaTaiKhoan() : bool
+}
+
+TaiKhoan <|-- NhanVien
+NhanVien <|-- Admin
+
+' === NHÓM LỚP NGHIỆP VỤ NÔNG SẢN ===
+class SanPham {
+  - idSanPham : int
+  - tenSanPham : String
+  - loaiNongSan : String
+  - donViTinh : String
+  - moTa : String
+  - trangThai : int
+  + themMoi() : bool
+  + capNhat() : bool
+  + xoa() : booll
+  + khoiphuc(): booll
+}
+
+class VungTrong {
+  - idVungTrong : int
+  - tenVungTrong : String
+  - ban : String
+  - xa : String
+  - tinh : String
+  - moTa : String
+  + themMoi() : bool
+  + capNhat() : bool
+  + xoa() : bool
+  + khoiphuc(): bool
+}
+
+class SanPhamVungTrong {
+  - idSpVungTrong : int
+  - muaVu : String
+  - sanLuongDuKien : double
+  - ghiChu : String
+  + phanBoSanLuong() : bool
+}
+
+class HoKinhDoanh {
+  - idHo : int
+  - tenHo : String
+  - tenChuHo : String
+  - soDienThoai : String
+  - diaChiChiTiet : String
+  - ngayThamGia : Date
+  - trangThai : int
+  + themMoi() : bool
+  + capNhat() : bool
+  + xoa(): bool
+  + khoiphuc(): bool
+  + thayDoiTrangThai() : bool
+}
+
+class GiaNongSan {
+  - idGia : int
+  - loaiGia : String
+  - gia : double
+  - ngayApDung : Date
+  - ngayKetThuc : Date
+  - ghiChu : String
+  + capNhatGia() : bool
+  + traCuuLichSuGia() : List
+}
+
+class DauMoi {
+  - idDauMoi : int
+  - tenDauMoi : String
+  - loaiDauMoi : String
+  - nguoiLienHe : String
+  - soDienThoai : String
+  - diaChi : String
+  - ghiChu : String
+  + themMoi() : bool
+  + capNhat() : bool
+  + xoa() : bool
+  + khoiphuc(): bool
+}
+
+' === QUAN HỆ GIỮA CÁC LỚP ===
+SanPham "1" -- "0..*" VungTrong : phân bổ sản xuất >
+(SanPham, VungTrong) .. SanPhamVungTrong
+
+VungTrong "1" -- "0..*" HoKinhDoanh : gồm các hộ >
+SanPham "1" -- "0..*" GiaNongSan : niêm yết >
+TaiKhoan "1" -- "0..*" GiaNongSan : cập nhật >
+SanPham "0..1" -- "0..*" DauMoi : thu mua / tiêu thụ >
+
+@enduml

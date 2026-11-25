@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+skinparam shadowing false
+
+title Sơ đồ Triển khai (Deployment) - Hệ thống Quản lý Nông sản Địa phương
+
+node "Thiết bị Người dùng\n(Client PC / Mobile)" <<device>> as Client {
+  component "Trình duyệt Web\n(Chrome, Edge, Cốc Cốc)" as Browser
+  component "Giao diện Frontend\n(HTML5, CSS3, JavaScript)" as UI
+}
+
+node "Máy chủ Web\n(Apache / XAMPP)" <<executionEnvironment>> as WebServer {
+  component "Ứng dụng Web PHP\n(PHP 8.x - Xử lý nghiệp vụ)" as PHPApp
+  component "Trình điều khiển PDO\n(Kết nối & truy vấn an toàn)" as PDO
+}
+
+node "Máy chủ Cơ sở dữ liệu\n(MySQL / MariaDB)" <<executionEnvironment>> as DBServer {
+  component "Hệ quản trị MySQL\n(InnoDB, utf8mb4)" as MySQL
+  database "CSDL: ql_nong_san\n(7 bảng dữ liệu hệ thống)" as DB
+}
+
+Client -- WebServer : HTTP / HTTPS\n(Request / HTML)
+WebServer -- DBServer : TCP/IP (Port 3306)\n(SQL / PDO)
+@enduml

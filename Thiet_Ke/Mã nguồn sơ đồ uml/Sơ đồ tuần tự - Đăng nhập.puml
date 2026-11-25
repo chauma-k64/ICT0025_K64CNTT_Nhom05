@@ -1,0 +1,44 @@
+@startuml
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor "Admin / Nhân viên" as User
+boundary "Giao diện Đăng nhập\n(login.php)" as View
+control "Bộ xử lý xác thực\n(login.php / auth.php)" as Controller
+database "CSDL MySQL\n(tai_khoan)" as DB
+
+User -> View : 1. Truy cập trang đăng nhập
+activate View
+View --> User : 2. Hiển thị form nhập tài khoản
+deactivate View
+
+User -> View : 3. Nhập ten_dang_nhap, mat_khau & bấm Đăng nhập
+activate View
+View -> Controller : 4. Gửi dữ liệu POST (ten_dang_nhap, mat_khau)
+activate Controller
+
+Controller -> DB : 5. SELECT * FROM tai_khoan WHERE ten_dang_nhap = ?
+activate DB
+DB --> Controller : 6. Trả về bản ghi tài khoản (hoặc rỗng)
+deactivate DB
+
+alt Tài khoản không tồn tại HOẶC sai password_verify()
+    Controller --> View : 7a. Trả về thông báo lỗi "Sai tên đăng nhập hoặc mật khẩu"
+    activate View
+    View --> User : 8a. Hiển thị thông báo lỗi trên form
+    deactivate View
+else Tài khoản bị khóa (trang_thai == 0)
+    Controller --> View : 7b. Trả về thông báo lỗi "Tài khoản đã bị khóa"
+    activate View
+    View --> User : 8b. Hiển thị thông báo khóa tài khoản
+    deactivate View
+else Hợp lệ & trang_thai == 1
+    Controller -> Controller : 7c. Lưu thông tin vào $_SESSION['user']
+    Controller --> View : 8c. Chuyển hướng sang Trang quản trị (admin.php)
+    activate View
+    View --> User : 9. Hiển thị giao diện Dashboard theo vai trò
+    deactivate View
+end
+
+deactivate Controller
+@enduml

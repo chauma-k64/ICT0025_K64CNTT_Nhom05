@@ -1,0 +1,43 @@
+@startuml
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor "Cán bộ quản lý\n(Admin / Nhân viên)" as User
+boundary "Giao diện Thêm SP\n(insert.php)" as View
+control "Bộ xử lý nghiệp vụ\n(insert.php / auth.php)" as Controller
+database "CSDL MySQL\n(san_pham)" as DB
+
+User -> View : 1. Chọn "+ Thêm sản phẩm mới"
+activate View
+View -> Controller : 2. Yêu cầu mở trang (insert.php)
+activate Controller
+Controller -> Controller : 3. Kiểm tra quyền yeu_cau_vai_tro(['Admin', 'NhanVien'])
+Controller --> View : 4. Cho phép hiển thị biểu mẫu nhập liệu
+deactivate Controller
+View --> User : 5. Hiển thị form nhập thông tin sản phẩm
+deactivate View
+
+User -> View : 6. Nhập thông tin sản phẩm & bấm "Lưu"
+activate View
+View -> Controller : 7. Gửi dữ liệu biểu mẫu (POST)
+activate Controller
+Controller -> Controller : 8. Kiểm tra tính hợp lệ dữ liệu (Validate)
+
+alt Dữ liệu không hợp lệ (rỗng / sai định dạng)
+    Controller --> View : 9a. Trả về danh sách lỗi & dữ liệu cũ
+    activate View
+    View --> User : 10a. Hiển thị thông báo lỗi yêu cầu nhập lại
+    deactivate View
+else Dữ liệu hợp lệ
+    Controller -> DB : 9b. INSERT INTO san_pham (..., trang_thai = 1)
+    activate DB
+    DB --> Controller : 10b. Xác nhận lưu thành công
+    deactivate DB
+    Controller --> View : 11. Chuyển hướng về admin.php?page=san_pham
+    activate View
+    View --> User : 12. Hiển thị danh sách sản phẩm đã cập nhật
+    deactivate View
+end
+
+deactivate Controller
+@enduml

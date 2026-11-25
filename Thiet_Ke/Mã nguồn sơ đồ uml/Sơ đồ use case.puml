@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam actorStyle awesome
+
+actor "Người dân / Khách truy cập" as Dan
+actor "Nhân viên HTX" as NV
+actor "Quản trị viên (Admin)" as Admin
+
+' Quan hệ kế thừa: Admin thừa hưởng toàn bộ quyền của Nhân viên HTX
+Admin -|> NV
+
+rectangle "Hệ thống Quản lý Nông sản Địa phương" {
+  ' --- Nhóm chức năng công khai (Người dân) ---
+  usecase "Xem danh sách & chi tiết nông sản" as UC1
+  usecase "Tìm kiếm, lọc nông sản" as UC5
+  usecase "Tra cứu vùng trồng, mùa vụ & sản lượng" as UC2
+  usecase "Xem bảng giá thu mua & giá bán nông sản" as UC3
+  usecase "Xem danh sách đầu mối thu mua, tiêu thụ" as UC4
+
+  ' --- Ca sử dụng dùng chung (bắt buộc qua <<include>>) ---
+  usecase "Đăng nhập hệ thống" as UC_Login
+
+  ' --- Nhóm chức năng nghiệp vụ (Nhân viên HTX) ---
+  usecase "Đổi mật khẩu cá nhân" as UC6
+  usecase "Quản lý danh mục nông sản" as UC7
+  usecase "Quản lý vùng trồng & mùa vụ" as UC8
+  usecase "Quản lý hộ sản xuất HTX" as UC9
+  usecase "Quản lý giá nông sản" as UC10
+  usecase "Quản lý đầu mối thu mua" as UC11
+  usecase "Quản lý báo cáo & thống kê" as UC12
+
+  ' --- Nhóm chức năng quản trị (Admin) ---
+  usecase "Quản lý tài khoản & phân quyền" as UC13
+}
+
+' Tương tác trực tiếp (Association)
+Dan -- UC1
+Dan -- UC2
+Dan -- UC3
+Dan -- UC4
+
+NV -- UC6
+NV -- UC7
+NV -- UC8
+NV -- UC9
+NV -- UC10
+NV -- UC11
+NV -- UC12
+
+Admin -- UC13
+
+' Quan hệ <<extend>>: Tìm kiếm, lọc mở rộng tùy chọn từ Xem danh sách nông sản
+UC5 .> UC1 : <<extend>>
+
+' Quan hệ <<include>>: Mọi chức năng quản trị đều bắt buộc phải Đăng nhập hệ thống
+UC6 ..> UC_Login : <<include>>
+UC7 ..> UC_Login : <<include>>
+UC8 ..> UC_Login : <<include>>
+UC9 ..> UC_Login : <<include>>
+UC10 ..> UC_Login : <<include>>
+UC11 ..> UC_Login : <<include>>
+UC12 ..> UC_Login : <<include>>
+UC13 ..> UC_Login : <<include>>
+@enduml
