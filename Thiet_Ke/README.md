@@ -41,3 +41,6 @@ ThietKe/
 ```
 
 ---
+## Cách để có thể chỉnh sửa sơ đồ
+
+- Truy cấp `https://www.planttext.com/` sau đó dán tệp `.puml` ở thư mục `Mã nguồn sơ đồ uml` rồi chạy để ra sơ đồ
